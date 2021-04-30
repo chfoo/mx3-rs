@@ -1,0 +1,17 @@
+[package]
+name = "mx3"
+version = "0.1.0"
+edition = "2018"
+authors = ["Christopher Foo <chris.foo@gmail.com>"]
+license = "MIT"
+description = "Implementation of the mx3 algorithm providing a bit mixer, pseudo-random number generator, and hash function."
+repository = "https://github.com/chfoo/mx3-rs"
+readme = "README.md"
+categories = ["algorithms"]
+keywords = ["hash", "random"]
+
+[dependencies]
+rand_core = "0.6"
+
+[dev-dependencies]
+rand = { version = "0.8", default-features = false }
