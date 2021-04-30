@@ -3,6 +3,8 @@
 //!
 //! The crate is *not* intended for cryptographically secure purposes.
 //!
+//! The crate implements revision 2 of the mx3 algorithm.
+//!
 //! ## Examples
 //!
 //! ### Mixing bits
