@@ -7,8 +7,8 @@ license = "MIT"
 description = "Implementation of the mx3 algorithm providing a bit mixer, pseudo-random number generator, and hash function."
 repository = "https://github.com/chfoo/mx3-rs"
 readme = "README.md"
-categories = ["algorithms"]
-keywords = ["hash", "random"]
+categories = ["algorithms", "no-std"]
+keywords = ["hash", "random", "no_std"]
 
 [dependencies]
 rand_core = "0.6"

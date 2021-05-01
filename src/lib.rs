@@ -32,14 +32,18 @@
 //! ```
 #![forbid(unsafe_code)]
 #![warn(missing_docs)]
+#![no_std]
 
-use std::{
-    fmt::Debug,
+mod cursor;
+
+use core::{
+    fmt::{self, Debug, Formatter},
     hash::Hasher,
-    io::{Cursor, Read},
 };
 
 use rand_core::{RngCore, SeedableRng};
+
+use crate::cursor::Cursor;
 
 const PARAMETER_C: u64 = 0xbea225f9eb34556d;
 
@@ -113,7 +117,7 @@ impl RngCore for Mx3Rng {
 }
 
 impl Debug for Mx3Rng {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
         write!(f, "Mx3Rng {{...}}")
     }
 }
@@ -159,10 +163,8 @@ impl Mx3Hasher {
         h
     }
 
-    fn write_into_partial_int_buffer<R: Read>(&mut self, mut bytes: R) -> usize {
-        let bytes_read = bytes
-            .read(&mut self.partial_int_buffer[self.partial_int_buffer_len..])
-            .unwrap();
+    fn write_into_partial_int_buffer(&mut self, bytes: &mut Cursor) -> usize {
+        let bytes_read = bytes.read(&mut self.partial_int_buffer[self.partial_int_buffer_len..]);
         self.partial_int_buffer_len += bytes_read;
         debug_assert!(self.partial_int_buffer_len <= 8);
 
@@ -179,7 +181,7 @@ impl Mx3Hasher {
     }
 }
 
-impl std::hash::Hasher for Mx3Hasher {
+impl Hasher for Mx3Hasher {
     fn write(&mut self, bytes: &[u8]) {
         let mut cursor = Cursor::new(bytes);
         let mut bytes_remaining = bytes.len();
@@ -245,7 +247,7 @@ impl std::hash::Hasher for Mx3Hasher {
 }
 
 impl Debug for Mx3Hasher {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
         write!(f, "Mx3Hasher {{...}}")
     }
 }
@@ -367,7 +369,7 @@ mod tests {
     fn test_debug() {
         let rng = Mx3Rng::new(1);
         let hasher = Mx3Hasher::default();
-        format!("{:?} {:?}", rng, hasher);
+        format_args!("{:?} {:?}", rng, hasher);
     }
 
     #[test]
