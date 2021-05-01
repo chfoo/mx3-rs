@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 (2021-05-01)
 
 * Added no_std compatibility
 
