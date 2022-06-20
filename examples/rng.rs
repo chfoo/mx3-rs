@@ -1,6 +1,6 @@
 use std::io::Write;
 
-use mx3::Mx3Rng;
+use mx3::v3::Mx3Rng;
 use rand::RngCore;
 
 fn main() -> Result<(), std::io::Error> {

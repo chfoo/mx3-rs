@@ -1,7 +1,7 @@
 [package]
 name = "mx3"
-version = "0.2.0"
-edition = "2018"
+version = "0.3.0"
+edition = "2021"
 authors = ["Christopher Foo <chris.foo@gmail.com>"]
 license = "MIT"
 description = "Implementation of the mx3 algorithm providing a bit mixer, pseudo-random number generator, and hash function."
@@ -10,8 +10,16 @@ readme = "README.md"
 categories = ["algorithms", "no-std"]
 keywords = ["hash", "random", "no_std"]
 
+[features]
+default = []
+hasher = []
+
 [dependencies]
 rand_core = "0.6"
 
 [dev-dependencies]
 rand = { version = "0.8", default-features = false }
+
+[[example]]
+name = "stream_hasher"
+required-features = ["hasher"]
