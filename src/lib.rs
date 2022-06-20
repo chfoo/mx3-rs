@@ -38,6 +38,7 @@ pub mod v1;
 pub mod v2;
 pub mod v3;
 
+#[cfg(feature = "hasher")]
 use core::fmt::{Debug, Formatter};
 
 /// Hasher for computing a hash digest of a stream of bytes.

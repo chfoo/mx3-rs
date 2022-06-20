@@ -1,6 +1,6 @@
 [package]
 name = "mx3"
-version = "0.3.0"
+version = "1.0.0"
 edition = "2021"
 authors = ["Christopher Foo <chris.foo@gmail.com>"]
 license = "MIT"
