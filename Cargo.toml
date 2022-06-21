@@ -1,6 +1,6 @@
 [package]
 name = "mx3"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 authors = ["Christopher Foo <chris.foo@gmail.com>"]
 license = "MIT"
@@ -19,6 +19,10 @@ rand_core = "0.6"
 
 [dev-dependencies]
 rand = { version = "0.8", default-features = false }
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
 
 [[example]]
 name = "stream_hasher"

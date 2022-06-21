@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 (2022-06-21)
+
+* Fixed documentation.
+
 ## 1.0.0 (2022-06-20)
 
 * Changed: the previously available functions are now in a `v2` module to be explicitly safe about the output. You need to use from `mx3::v2` to keep existing behavior.
